@@ -36,13 +36,19 @@
         </form>
 
         <?php
-            $stmt = $mysqli->prepare("select title from todos");
+            $stmt = $mysqli->prepare("select title, id from todos");
             $stmt->execute();
-            $stmt->bind_result($item);
+            $stmt->bind_result($item, $id);
 
             while($stmt->fetch()){
                 echo '<input type="checkbox">';
                 echo '<span>'.htmlentities($item).'</span><br>';
+                ?>
+                <form method="POST" action="delete.php">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>" />
+                    <input type="submit" value="Delete">
+                </form>
+                <?php
             }
             $stmt->close();
         ?>

@@ -33,10 +33,6 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
-span {
-    font-size: 18px;
-}
-
 input[type="checkbox"]:checked + span {
     text-decoration: line-through;
     color: #888;
